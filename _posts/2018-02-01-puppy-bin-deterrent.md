@@ -45,7 +45,7 @@ To keep things simple *(and cheap)* I'm going to use [pushover.net](https://push
 
 ### The code
 
-```
+```javascript
 /*
  * Wait for accelerometer event then trigger
  * them trigger the buzzer and webhook
@@ -71,3 +71,5 @@ void loop() {
 }
 
 ```
+
+
