@@ -5,8 +5,8 @@ cover: assets/images/homekit-banner.jpg
 logo: assets/images/logo.png
 favicon: assets/images/favicon.png
 baseurl: "/" # the subpath of your site, e.g. /blog/ or / for root
-url: "http://andrew.house" # the base hostname & protocol for your site
-paginate:	5 # The number of posts to show per page on your homepage
+url: "http://andrew.house/" # the base hostname & protocol for your site
+paginate:	8 # The number of posts to show per page on your homepage
 
 # Social
 facebook: mortocks
