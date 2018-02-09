@@ -3,7 +3,7 @@ layout: post
 title: Puppy bin deterrent
 tags: proton-particle pet accelerometer
 cover: assets/images/april-rubbish.jpg
-date: 2018-02-01 04:00:00
+date: 2018-01-30 04:00:00
 author: Author
 ---
 
@@ -71,5 +71,3 @@ void loop() {
 }
 
 ```
-
-
