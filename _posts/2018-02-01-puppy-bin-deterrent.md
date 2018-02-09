@@ -3,6 +3,7 @@ layout: post
 title: Puppy bin deterrent
 tags: proton-particle pet accelerometer
 cover: assets/images/april-rubbish.jpg
+date: 2018-02-01 04:00:00
 author: Author
 ---
 
@@ -39,7 +40,7 @@ Ideally this device would be wireless (so April has less chance of causing more 
 
 ### Notifications
 
-To keep things simple *(and cheap)* I'm going to use [pushover.net](https://pushover.net) to send push notifications to my phone when the buzzer is triggered. This is usually done by a simple ```curl``` request but unfortunately the proton particle doesn't support this via the IDE so I'll have to setup a webhook to do it for me. 
+To keep things simple *(and cheap)* I'm going to use [pushover.net](https://pushover.net) to send push notifications to my phone when the buzzer is triggered. This is usually done by a simple ```curl``` request but unfortunately the proton particle doesn't support this via the IDE so I'll have to setup a webhook to do it for me.
 
 
 ### The code
@@ -59,16 +60,14 @@ void setup() {
 }
 
 void loop() {
-    
+
     // Trigger the buzzer for 300ms
-    digitalWrite(buzzer, HIGH); 
+    digitalWrite(buzzer, HIGH);
     delay(300);
     digitalWrite(buzzer, LOW);
-    
+
     // Trigger the webhook to send a push notification
     Particle.publish("trigger", 1, PRIVATE);
 }
 
 ```
-
-
