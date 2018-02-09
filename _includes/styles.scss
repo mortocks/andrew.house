@@ -55,7 +55,9 @@ body {
   -o-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig";
 }
-
+.ampstart-fullpage-hero-heading{
+    line-height: 3rem !important;
+}
 .site-header {
   position: relative;
   width: 100%;
