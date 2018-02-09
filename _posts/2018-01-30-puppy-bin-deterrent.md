@@ -4,7 +4,7 @@ title: Puppy bin deterrent
 tags: proton-particle pet accelerometer
 cover: assets/images/april-rubbish.jpg
 date: 2018-01-30 04:00:00
-author: Author
+author: mortocks
 ---
 
 My dog April has taken to pushing the bin over when I'm not home. So lets hook up a deterrent to correct this behaviour when I'm not at home.
