@@ -1,8 +1,14 @@
 @import 'bourbon/bourbon';
 @import 'syntax-highlighting';
+@import 'ss-social-circle';
 
 $grey-color:       #828282;
 $theme-color: #FFC521;
+
+amp-social-share[type="twitter"] {
+  @extend .ss-icon;
+  @extend .ss-twitter;
+}
 
 .icon {
 
