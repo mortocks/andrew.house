@@ -47,27 +47,119 @@ To keep things simple *(and cheap)* I'm going to use [pushover.net](https://push
 
 ```javascript
 /*
- * Wait for accelerometer event then trigger
- * them trigger the buzzer and webhook
- */
+  Bin Movement
 
-int buzzer = D7;  // The buzzers pin on the particle
+  Reads an Analog Devices ADXL3xx accelerometer and if the movement
+  is above a thrshold then play a buzzer and send a push notification
+
+  The circuit:
+  
+    Accelerometer
+    - analog 1: z-axis
+    - analog 2: y-axis
+    - analog 3: x-axis
+    - analog 4: ground
+    - analog 5: vcc
+  
+    Buzzer
+    - GND: buzzer ground
+    - D1: buzzer positive
+
+  created 15 Feb 2018 
+  by Andrew Morton
+
+  This  code is in the public domain.
+
+  http://andrew.house
+*/
+
+// Variable for logging
+char publishString[40];
+
+// these constants describe the pins. They won't change:
+
+// Accelerometer pins
+const int groundpin = A5;             // analog input pin 5 -- ground
+const int powerpin = A4;              // analog input pin 4 -- voltage
+const int xpin = A3;                  // x-axis of the accelerometer
+const int ypin = A2;                  // y-axis of the accelerometer
+const int zpin = A1;                  // z-axis of the accelerometer
+
+// Buzzer pins
+const int buzzer = D1;
+
+// Stored properties of last movement for comparrison
+int lastX = 0;
+int lastY = 0;
+int lastZ = 0;
+
+// Amount of movement
+int deltaX = 0;
+int deltaY = 0;
+int deltaZ = 0;
+
+// Amount of movement required to trigger the buzzer
+int threshhold = 15;
+
+// Only trigger notifications every 10 seconds
+const int notificationDelay = 10000;
+int notificationCounter = 0;
 
 void setup() {
+    
+  // initialize the serial communications:
+  Serial.begin(9600);
 
-    // Setup pin as an output
-    pinMode(buzzer, OUTPUT);
+  pinMode(groundpin, OUTPUT);
+  pinMode(powerpin, OUTPUT);
+  digitalWrite(groundpin, LOW);
+  digitalWrite(powerpin, HIGH);
+
+  pinMode(buzzer, OUTPUT);
 }
 
 void loop() {
 
-    // Trigger the buzzer for 300ms
-    digitalWrite(buzzer, HIGH);
-    delay(300);
-    digitalWrite(buzzer, LOW);
+  // Update the movement delta
+  deltaX = abs(lastX - analogRead(xpin));
+  deltaY = abs(lastY - analogRead(ypin));
+  deltaZ = abs(lastZ - analogRead(zpin));
 
-    // Trigger the webhook to send a push notification
-    Particle.publish("trigger", 1, PRIVATE);
+  // Reset values
+  lastX = analogRead(xpin);
+  lastY = analogRead(ypin);
+  lastZ = analogRead(zpin);
+
+  // Combine deltas for a "total movement" delta
+  int delta = deltaX + deltaY + deltaZ;
+    
+  // If there's a big enough movement, trigger an event
+  if (delta > threshhold) {
+    
+    // Log data every 10 seconds
+    if (notificationCounter <  notificationDelay) {
+      sprintf(publishString, "%d %d %d %d", deltaX, deltaY, deltaZ, delta);
+      Particle.publish("motionDetected", publishString, PRIVATE);
+    }
+    
+    notificationCounter = 0;
+
+    // Start buzzer
+    digitalWrite(buzzer, HIGH);
+    
+    // Small delay so buzzer won't imdialty stop
+    delay(100);
+  } 
+  
+  else {
+      
+    // Stop buzzer
+    digitalWrite(buzzer, LOW);
+    notificationCounter = notificationCounter++;
+    
+  }
+
+
 }
 
 ```
