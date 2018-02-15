@@ -42,7 +42,7 @@ Ideally this device would be wireless (so April has less chance of causing more 
 
 To keep things simple *(and cheap)* I'm going to use [pushover.net](https://pushover.net) to send push notifications to my phone when the buzzer is triggered. This is usually done by a simple ```curl``` request but unfortunately the proton doesn't support this via the IDE so I'll have to setup a webhook to do it for me.
 
-<amp-img src="{{ site.baseurl }}assets/images/dog-bin-webhook.png" width="656" height="400" layout="responsive" alt="" class="mb3"></amp-img>
+<amp-img src="{{ site.baseurl }}assets/images/dog-bin-webhook.png" layout="responsive" alt="" class="mb3"></amp-img>
 
 Now I have an event called ```motionDetected``` that I can call via ```Particle.publish()``` to send the push notification.
 
