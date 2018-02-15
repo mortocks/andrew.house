@@ -7,7 +7,7 @@ date: 2018-01-30 04:00:00
 author: Andrew Morton
 ---
 
-My dog April has taken to pushing the bin over when I'm not home. So lets hook up a deterrent to correct this behaviour when I'm not at home.
+My dog April has taken to pushing the bin over when I'm not home. So lets hook up a device to correct this behaviour when I'm not at home.
 
 <!--more-->
 
@@ -40,10 +40,16 @@ Ideally this device would be wireless (so April has less chance of causing more 
 
 ### Notifications
 
-To keep things simple *(and cheap)* I'm going to use [pushover.net](https://pushover.net) to send push notifications to my phone when the buzzer is triggered. This is usually done by a simple ```curl``` request but unfortunately the proton particle doesn't support this via the IDE so I'll have to setup a webhook to do it for me.
+To keep things simple *(and cheap)* I'm going to use [pushover.net](https://pushover.net) to send push notifications to my phone when the buzzer is triggered. This is usually done by a simple ```curl``` request but unfortunately the proton doesn't support this via the IDE so I'll have to setup a webhook to do it for me.
+
+<amp-img src="{{ site.baseurl }}assets/images/dog-bin-webhook.png" width="656" height="400" layout="responsive" alt="" class="mb3"></amp-img>
+
+Now I have an event called ```motionDetected``` that I can call via ```Particle.publish()``` to send the push notification.
 
 
 ### The code
+
+The code is pretty straight forward. I flashed the particle with the following code. 
 
 ```javascript
 /*
@@ -163,3 +169,9 @@ void loop() {
 }
 
 ```
+
+## The Result
+
+TODO
+
+
