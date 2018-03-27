@@ -1,21 +1,18 @@
 ---
 layout: post
 title: Puppy bin deterrent
+description: My dog April has taken to pushing the bin over when I’m not home. So lets hook up a device to correct this behaviour when I’m not at home.
 tags: proton-particle pet accelerometer
-cover: assets/images/april-rubbish.jpg
+cover: /assets/images/april-rubbish.jpg
 date: 2018-01-30 04:00:00
 author: Andrew Morton
 ---
-
-My dog April has taken to pushing the bin over when I'm not home. So lets hook up a device to correct this behaviour when I'm not at home.
-
-<!--more-->
 
 Let me introduce you to April. She's my 11 month old, half french bulldog, half pug. April has been one of the big drivers for my home automation projects because I've become a besotted "doggy daddy" and I like to check in on her while I'm at work and make sure she has everything she needs like  the air-conditioner and fans on hot days. She's a delicate flower you know.
 
 She's my perfect little angel and I adore her...
 
-<amp-img src="{{ site.baseurl }}assets/images/april-rubbish.jpg" width="656" height="400" layout="responsive" alt="" class="mb3"></amp-img>
+![april in rubish](/assets/images/april-rubbish.jpg)
 
 ....most of the time.
 

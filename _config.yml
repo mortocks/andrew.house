@@ -1,57 +1,58 @@
-# Site settings
-title: Andrew.house
-description: The ramblins about Andrews home automation projects
-cover: assets/images/homekit-banner.jpg
-logo: assets/images/logo.png
-favicon: assets/images/favicon.png
-baseurl: "/" # the subpath of your site, e.g. /blog/ or / for root
-url: "http://andrew.house/" # the base hostname & protocol for your site
-paginate:	8 # The number of posts to show per page on your homepage
 
-# Social
-facebook: mortocks
-twitter: mortocks
-github:  mortocks
+# Pagination Settings
+pagination:
+  enabled: true
+  per_page: 3
+  permalink: '/page/:num/'
+  title: ':title - page :num of :max'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
 
-#Additional Pages
-about: about
-contact: contact
-privacy-policy: privacy-policy
+# Theme settings
+doks:
+    baseurl:
+    color_theme: yellow
+    header:
+        logo:
+            text: andrews.house
+            image:
+        nav:
+            - item_name: Item 1
+              item_url: '#'
+            - item_name: Item 2
+              item_url: '#'
+            - item_name: Item 3
+              item_url: '#'
+    footer:
+        content:
+            logo:
+                text: andrews.house
+                image:
+            copyright: Copyright &copy; 2018. - andrews.house <br>All rights reserved.
+        social_list:
+            - network_name: facebook
+              profile_url: 'https://facebook.com/mortocks'
+            - network_name: twitter
+              profile_url: 'https://twitter.com/mortocks'
+            - network_name: instagram
+              profile_url: 'https://www.instagram.com/mortocks/'
+    google_analytics:
+        tracking_code: # Add your Google Analytics tracking code to activate Google Analytics
+    comments:
+        disqus_forum_shortname: # Add your disqus forum shortname to activate comments
 
+# SASS settings
+sass:
+    sass_dir: ./doks-theme/_sass
+    style: :compressed
 
-permalink: /:title
+# Jekyll settings
+layouts_dir: ./doks-theme/_layouts
+includes_dir: ./doks-theme/_includes
+exclude: [ 'README.md', 'CHANGELOG.md' ]
+permalink: /:title/
 
-
-# Google Analytics
-analytics_id: ""
-
-# Build settings
-markdown: kramdown
-
-kramdown:
-  parse_block_html: true
 
 plugins:
   - jekyll-paginate
-
-
-# Settings for rake task
-safe: False
-lsi: False
-username: mortocks #github username
-repo: andrew.home #github repository
-branch: master #branch
-relative_source: ../hanuman/ #source directory
-destination: ../hanuman-pages/ #destination directory
-production_url:  https://andrew.house/
-source_url:  https://github.com/mortocks/andrew.house #source repository url
-
-exclude:
-  - README.md
-  - Rakefile
-  - Gemfile
-  - Gemfile.lock
-  - changelog.md
-  - "*.Rmd"
-  - vendor
-  - .travis.yml
