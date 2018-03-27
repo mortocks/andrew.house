@@ -61,64 +61,22 @@
 			</div><!-- /.container -->
 		</div><!-- /.hero-subheader -->
 
-
-	{% for post in paginator.posts %}
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-        <div class="article-item">
-          <header class="post-header">
-            <h2 class="post-title" itemprop="name"><a href="{{ site.baseurl }}{{ post.url | remove: '/'}}" itemprop="url">{{ post.title }}</a></h2>
-          </header>
-          <section class="post-excerpt" itemprop="description">
-            <p class="post-description">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-          </section>
-          <div class="post-meta">
-
-                {% if site.data.author["author"]["assets"] %}<amp-img width="24" height="24" class="author-thumb" layout="responsive" src="{{ site.baseurl }}{{site.data.author["author"]["assets"]}}" alt="Author image"/></amp-img>{% endif %}
-                {{site.data.author["author"]["name"]}}
-
-            {% if post.tags.size > 0 %}
-                in
-                {% for tag in post.tags %}
-                    {% if forloop.index == post.tags.size %}
-                       <a href='{{site.baseurl}}tags/#{{tag}}'>{{ tag | capitalize }}</a>
-                    {% else %}
-                       <a href='{{site.baseurl}}tags/#{{tag}}'>{{ tag | capitalize }}</a>,
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-              <time class="post-date" datetime="{{ post.date | date:'%Y-%m-%d' }}">{{ post.date | date_to_string }}</time>
-          </div>
-        </div>
-      </article>
-    {% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-
-		{% if page.grid_navigation %}
-			<div class="section section--darker-theme-color-bg">
+  {% if site.posts %}
+ <div class="section section--darker-theme-color-bg">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="nav-grid nav-grid--out">
 								<div class="row">
-									{% for item in page.grid_navigation %}
+									{% for item in site.posts %}
 										<div class="col-sm-6 col-lg-4">
 											<a href="{% if jekyll.environment == 'production' %}{{ site.doks.baseurl }}{% endif %}{{ item.url }}" class="nav-grid__item">
 												<div class="nav-grid__content" data-mh>
 													<h2 class="nav-grid__title">{{ item.title }}</h2>
-													<p>{{ item.excerpt }}</p>
+													<p>{{ item.description }}</p>
 												</div><!-- /.nav-grid__content -->
 												<p class="nav-grid__btn">
-													{{ item.cta }}
+													Read more
 													<i class="icon icon--arrow-right"></i>
 												</p>
 											</a><!-- /.nav-grid__item -->
@@ -130,7 +88,14 @@
 					</div><!-- /.row -->
 				</div><!-- /.container -->
 			</div><!-- /.section -->
-		{% endif %}
+  {% endif %}
+
+
+
+
+
+
+
 		{% include site-footer.html %}
 	</body>
 </html>

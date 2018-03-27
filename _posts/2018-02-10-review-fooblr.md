@@ -2,6 +2,7 @@
 layout: post
 title: Foobler review
 tags: review pet gadget bluetooth
+description: While not really home automation, the Foobler is a smart dog toy that drops
 author: Author
 ---
 

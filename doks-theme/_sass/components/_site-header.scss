@@ -4,10 +4,11 @@
 
 /* ----- General ----- */
 .site-header {
-	position: absolute;
+	//position: absolute;
 	width: 100%;
 	height: 5.625rem;
 	border-bottom: 1px solid rgba($color-dark-blue, .15);
+	z-index: 10 !important;
 }
 
 /* ----- Navigation ----- */
