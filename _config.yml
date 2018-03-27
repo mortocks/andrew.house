@@ -11,7 +11,7 @@ pagination:
 
 # Theme settings
 doks:
-    baseurl:
+    baseurl: andrew.house
     color_theme: yellow
     header:
         logo:
