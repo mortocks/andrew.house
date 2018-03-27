@@ -4,7 +4,7 @@ paginate: 5
 
 # Theme settings
 doks:
-    baseurl: https://andrew.house
+    baseurl: http://andrew.house
     color_theme: yellow
     header:
         logo:
